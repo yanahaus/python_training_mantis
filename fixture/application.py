@@ -1,11 +1,9 @@
 from selenium import webdriver
 from fixture.session import SessionHelper
-from fixture.group import GroupHelper
-from fixture.contact import ContactHelper
+from fixture.project import ProjectHelper
 
 
 class Application:
-
     def __init__(self, browser, base_url):
         if browser == "firefox":
             self.wd = webdriver.Firefox()
@@ -16,8 +14,7 @@ class Application:
         else:
             raise ValueError("Unrecognize browser %s" % browser)
         self.session = SessionHelper(self)
-        self.group = GroupHelper(self)
-        self.contact = ContactHelper(self)
+        self.project = ProjectHelper(self)
         self.base_url = base_url
 
     def open_home_page(self):
