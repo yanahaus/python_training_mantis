@@ -2,12 +2,13 @@ from model.project import Project
 
 
 def test_add_project(app):
-    project = Project("name6", "description6")
-    old_projects = app.project.get_project_list()
-    if project in old_projects:
+    project = Project("name8", "description8")
+    old_list = app.soap.get_project_list()
+    if project in old_list:
         app.project.delete_project(project)
-        old_projects.remove(project)
+        old_list.remove(project)
+    old_list = app.soap.get_project_list()
     app.project.add_project(project)
-    new_projects = app.project.get_project_list()
-    old_projects.append(project)
-    assert sorted(old_projects, key=Project.id_or_max) == sorted(new_projects, key=Project.id_or_max)
+    new_list = app.soap.get_project_list()
+    old_list.append(project)
+    assert sorted(old_list, key=Project.id_or_max) == sorted(new_list, key=Project.id_or_max)
