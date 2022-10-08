@@ -25,6 +25,7 @@ class Application:
         self.soap = SoapHelper(self)
         self.config = config
         self.base_url = config['web']['baseUrl']
+        self.soap_url = config['web']['soapUrl']
 
     def open_home_page(self):
         wd = self.wd
